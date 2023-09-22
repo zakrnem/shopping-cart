@@ -10,10 +10,10 @@ function Navbar() {
         <h1>Store</h1>
       </div>
       <div className={styles.links}>
-        <Link to="/">Home</Link>
-        <Link to="/">Products</Link>
-        <Link to="/">About</Link>
-        <Link to="/">Cart</Link>
+        <Link to="home">Home</Link>
+        <Link to="store">Products</Link>
+        <Link to="about">About</Link>
+        <Link to="cart">Cart</Link>
       </div>
     </div>
   );
