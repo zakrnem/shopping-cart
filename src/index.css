@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "Medium";
+    src: url("./assets/NotoSans-Medium.ttf");
+  }
+
+:root {
+  --white: rgb(94, 91, 91);
+  --main-color: rgb(112, 214, 255);
+  --hover-color:rgb(149, 217, 244);
+  --active-color:rgb(209, 209, 209);
+}
+
+* {
+  font-family: Medium;
+}

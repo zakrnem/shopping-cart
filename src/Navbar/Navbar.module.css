@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "Logo";
+  src: url("../assets/MartianMono-Bold.ttf");
+}
+
+.header {
+  background-color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.logo > h1 {
+  color: var(--white);
+  font-family: Logo, Helvetica, sans-serif;
+  font-size: 3rem;
+  margin: 0;
+}
+
+.logo > img {
+  height: 5rem;
+}
+
+.links {
+  display: flex;
+  font-weight: 900;
+}
+
+.links > a {
+    text-decoration: none;
+    color: var(--white);
+    padding: 1.5rem 0.5rem;
+    border-radius: .5rem;
+}
+
+.links > a:hover {
+    background-color: var(--hover-color);
+    transition: background-color ease-in .4s;
+}
+
+.links > a:active {
+    color: var(--active-color);
+    transition: color ease-in-out 0.05s;
+}
