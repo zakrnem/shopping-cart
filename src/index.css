@@ -12,7 +12,7 @@
   --white: rgb(94, 91, 91);
   --main-color: rgb(112, 214, 255);
   --hover-color: rgb(172, 221, 240);
-  --active-color: rgb(209, 209, 209);
+  --active-color: #b5b527;
   --header-color: #ECF9FF;
   --gradient-1: #FFFBEB;
   --gradient-2: #FFE7CC;
@@ -41,4 +41,8 @@ body {
 
 h1 {
   font-family: Bold;
+}
+
+a {
+  text-decoration: none;
 }

@@ -1,7 +1,5 @@
 function Store() {
-    return (
-        <>Store</>
-    )
+  return <>Store</>;
 }
 
-export default Store
+export default Store;

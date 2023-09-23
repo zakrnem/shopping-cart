@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "normalize.css";
 import "./index.css";
 import Root from "./Root/Root.jsx";
-import Homepage from "./Homepage/Homepage.jsx"
+import Homepage from "./Homepage/Homepage.jsx";
 import Store from "./Store/Store.jsx";
 import About from "./About/About.jsx";
 import Cart from "./Cart/Cart.jsx";
@@ -16,6 +16,10 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "",
+        element: <Homepage />,
+      },
       {
         path: "home",
         element: <Homepage />,
@@ -31,8 +35,8 @@ const router = createBrowserRouter([
       {
         path: "cart",
         element: <Cart />,
-      }
-    ]
+      },
+    ],
   },
 ]);
 
