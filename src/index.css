@@ -1,15 +1,44 @@
 @font-face {
-    font-family: "Medium";
-    src: url("./assets/NotoSans-Medium.ttf");
-  }
+  font-family: "Medium";
+  src: url("./assets/NotoSans-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Bold";
+  src: url("./assets/NotoSans-Bold.ttf");
+}
 
 :root {
   --white: rgb(94, 91, 91);
   --main-color: rgb(112, 214, 255);
-  --hover-color:rgb(149, 217, 244);
-  --active-color:rgb(209, 209, 209);
+  --hover-color: rgb(172, 221, 240);
+  --active-color: rgb(209, 209, 209);
+  --header-color: #ECF9FF;
+  --gradient-1: #FFFBEB;
+  --gradient-2: #FFE7CC;
+  --gradient-3:  #F8CBA6;
 }
 
 * {
   font-family: Medium;
+  color: var(--white);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+h1 {
+  font-family: Bold;
 }
