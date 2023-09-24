@@ -1,5 +1,9 @@
 .homepage {
-  background-image: linear-gradient(var(--gradient-1), var(--gradient-2), var(--gradient-3));
+  background-image: linear-gradient(
+    var(--gradient-1),
+    var(--gradient-2),
+    var(--gradient-3)
+  );
   flex-grow: 1;
   display: grid;
   align-content: center;

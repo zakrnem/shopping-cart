@@ -6,7 +6,9 @@ function Homepage() {
     <div className={styles.homepage}>
       <h1>Welcome to The Store!</h1>
       <p>Your Destination for Quality and Style.</p>
-      <button><Link to="/home">Shop now</Link></button>
+      <button>
+        <Link to="/store">Shop now</Link>
+      </button>
     </div>
   );
 }

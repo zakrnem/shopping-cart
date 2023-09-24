@@ -13,10 +13,10 @@
   --main-color: rgb(112, 214, 255);
   --hover-color: rgb(172, 221, 240);
   --active-color: #b5b527;
-  --header-color: #ECF9FF;
-  --gradient-1: #FFFBEB;
-  --gradient-2: #FFE7CC;
-  --gradient-3:  #F8CBA6;
+  --header-color: #ecf9ff;
+  --gradient-1: #fffbeb;
+  --gradient-2: #ffe7cc;
+  --gradient-3: #f8cba6;
 }
 
 * {
@@ -37,6 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
+  max-width: 100%;
 }
 
 h1 {
