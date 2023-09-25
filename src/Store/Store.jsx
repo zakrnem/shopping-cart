@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import styles from "./Store.module.css";
+import PropTypes from "prop-types";
 
-function Store() {
+function Store({ cart, setCart }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const handleClick = (e) => {
-    console.log(e.target.parentElement.id)
-  }
+    const item = e.target.parentElement.id
+    const updatedCart = [ ...cart, item ]
+    setCart(updatedCart)
+  };
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products`)
@@ -29,8 +33,12 @@ function Store() {
   }, []);
 
   useEffect(() => {
-    if (error !== null) console.log(error)
-  }, [error])
+    if (error !== null) console.log(error);
+  }, [error]);
+
+  useEffect(() => {
+    console.log(cart)
+  }, [cart])
 
   return (
     <div className={styles.grid}>
@@ -50,12 +58,19 @@ function Store() {
             <img src={imageUrl} alt={title} />
             <div className={styles.title}>{title}</div>
             <div className={styles.price}>{price}</div>
-            <button className={styles.addcart} onClick={(e) => handleClick(e)}>Add to cart</button>
+            <button className={styles.addcart} onClick={(e) => handleClick(e)}>
+              Add to cart
+            </button>
           </div>
         );
       })}
     </div>
   );
 }
+
+Store.propTypes = {
+  cart: PropTypes.array,
+  setCart: PropTypes.func,
+};
 
 export default Store;

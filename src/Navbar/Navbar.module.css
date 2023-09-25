@@ -30,6 +30,7 @@
 
 .links {
   display: flex;
+  align-items: center;
   font-weight: 900;
 }
 
@@ -47,4 +48,21 @@
 .links > a:active {
   color: var(--active-color);
   transition: color ease-in-out 0.05s;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.cartcount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: orangered;
 }
