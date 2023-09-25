@@ -2,15 +2,14 @@ import { useState, useEffect } from "react";
 import styles from "./Store.module.css";
 import PropTypes from "prop-types";
 
-function Store({ cart, setCart }) {
-  const [data, setData] = useState([]);
+function Store({ cart, setCart, storeData, setStoreData }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const handleClick = (e) => {
-    const item = e.target.parentElement.id
-    const updatedCart = [ ...cart, item ]
-    setCart(updatedCart)
+    const item = e.target.parentElement.id;
+    const updatedCart = [...cart, item];
+    setCart(updatedCart);
   };
 
   useEffect(() => {
@@ -23,7 +22,7 @@ function Store({ cart, setCart }) {
         }
         return response.json();
       })
-      .then((actualData) => setData(actualData))
+      .then((actualData) => setStoreData(actualData))
       .catch((err) => {
         setError(err.message);
       })
@@ -37,22 +36,22 @@ function Store({ cart, setCart }) {
   }, [error]);
 
   useEffect(() => {
-    console.log(cart)
-  }, [cart])
+    console.log(cart);
+  }, [cart]);
 
   return (
     <div className={styles.grid}>
-      {loading && (
+      {loading && storeData.length < 1 && (
         <div className={styles.loading}>
           <div className={styles.loader} />
           Loading
         </div>
       )}
-      {Object.keys(data).map((index) => {
-        const key = data[index].id;
-        const title = data[index].title;
-        const price = data[index].price;
-        const imageUrl = data[index].image;
+      {Object.keys(storeData).map((index) => {
+        const key = storeData[index].id;
+        const title = storeData[index].title;
+        const price = storeData[index].price;
+        const imageUrl = storeData[index].image;
         return (
           <div key={key} className={styles.item} id={key}>
             <img src={imageUrl} alt={title} />
@@ -71,6 +70,8 @@ function Store({ cart, setCart }) {
 Store.propTypes = {
   cart: PropTypes.array,
   setCart: PropTypes.func,
+  storeData: PropTypes.array,
+  setStoreData: PropTypes.func
 };
 
 export default Store;
