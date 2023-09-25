@@ -8,7 +8,7 @@ function Store({ cart, setCart, storeData, setStoreData }) {
 
   const handleClick = (e) => {
     const item = e.target.parentElement.id;
-    const updatedCart = [...cart, item];
+    const updatedCart = [...cart, parseInt(item)];
     setCart(updatedCart);
   };
 
@@ -71,7 +71,7 @@ Store.propTypes = {
   cart: PropTypes.array,
   setCart: PropTypes.func,
   storeData: PropTypes.array,
-  setStoreData: PropTypes.func
+  setStoreData: PropTypes.func,
 };
 
 export default Store;

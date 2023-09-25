@@ -1,0 +1,7 @@
+.item {
+  background-color: var(--item-color);
+}
+
+.item > img {
+  height: 5rem;
+}

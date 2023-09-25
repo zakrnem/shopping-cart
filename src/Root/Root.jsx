@@ -11,7 +11,7 @@ import ErrorPage from "../error-page.jsx";
 
 function Root() {
   const [cart, setCart] = useState([]);
-  const [storeData, setStoreData] = useState([])
+  const [storeData, setStoreData] = useState([]);
   return (
     <>
       <Navbar cart={cart} />
@@ -22,10 +22,20 @@ function Root() {
         <Route path="/home" element={<Homepage />} />
         <Route
           path="/store"
-          element={<Store cart={cart} setCart={setCart} storeData={storeData} setStoreData={setStoreData} />}
+          element={
+            <Store
+              cart={cart}
+              setCart={setCart}
+              storeData={storeData}
+              setStoreData={setStoreData}
+            />
+          }
         />
         <Route path="/about" element={<About />} />
-        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
+        <Route
+          path="/cart"
+          element={<Cart cart={cart} setCart={setCart} storeData={storeData} />}
+        />
       </Routes>
     </>
   );
