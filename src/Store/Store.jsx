@@ -6,10 +6,23 @@ function Store({ cart, setCart, storeData, setStoreData }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const handleClick = (e) => {
-    const item = e.target.parentElement.id;
-    const updatedCart = [...cart, parseInt(item)];
-    setCart(updatedCart);
+  const handleAddCart = (e) => {
+    const item = parseInt(e.target.id);
+    let updatedCart = { ...cart }
+
+    let cartItems = []
+    for (let key in cart) {
+        cartItems.push(cart[key].id)
+    }
+    if (!cartItems.includes(item)) {
+      const index = Object.keys(cart).length + 1;
+      updatedCart = { ...updatedCart, [index]: { id: item, qty: 1 } };
+      setCart(updatedCart);
+    } else {
+      const index = cartItems.indexOf(item) + 1
+      updatedCart = { ...updatedCart, [index]: { ...updatedCart[index] , qty: ++updatedCart[index].qty } };
+      setCart(updatedCart);
+    }
   };
 
   useEffect(() => {
@@ -53,11 +66,15 @@ function Store({ cart, setCart, storeData, setStoreData }) {
         const price = storeData[index].price;
         const imageUrl = storeData[index].image;
         return (
-          <div key={key} className={styles.item} id={key}>
+          <div key={key} className={styles.item}>
             <img src={imageUrl} alt={title} />
             <div className={styles.title}>{title}</div>
             <div className={styles.price}>{price}</div>
-            <button className={styles.addcart} onClick={(e) => handleClick(e)}>
+            <button
+              className={styles.addcart}
+              onClick={(e) => handleAddCart(e)}
+              id={key}
+            >
               Add to cart
             </button>
           </div>
@@ -68,7 +85,7 @@ function Store({ cart, setCart, storeData, setStoreData }) {
 }
 
 Store.propTypes = {
-  cart: PropTypes.array,
+  cart: PropTypes.object,
   setCart: PropTypes.func,
   storeData: PropTypes.array,
   setStoreData: PropTypes.func,

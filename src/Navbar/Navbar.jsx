@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import imgUrl1 from "../assets/store-svgrepo-com2.svg";
 import PropTypes from "prop-types";
 
-function Navbar({ cart }) {
+function Navbar({ cartQty }) {
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
@@ -16,9 +16,7 @@ function Navbar({ cart }) {
         <Link to="about">About</Link>
         <Link to="cart" className={styles.cart}>
           Cart{" "}
-          {cart.length > 0 && (
-            <div className={styles.cartcount}>{cart.length}</div>
-          )}
+          {cartQty > 0 && <div className={styles.cartcount}>{cartQty}</div>}
         </Link>
       </div>
     </div>
@@ -26,7 +24,8 @@ function Navbar({ cart }) {
 }
 
 Navbar.propTypes = {
-  cart: PropTypes.array,
+  cart: PropTypes.object,
+  cartQty: PropTypes.number,
 };
 
 export default Navbar;

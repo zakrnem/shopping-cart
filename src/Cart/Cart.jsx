@@ -12,9 +12,11 @@ function Cart({ cart, setCart, storeData }) {
   return (
     <>
       {cart.length === 0 && (
-        <div className={styles['empty-cart']}>
+        <div className={styles["empty-cart"]}>
           <h2>No items yet? Continue shopping to explore more.</h2>
-          <button><Link to="/store">Explore items</Link></button>
+          <button>
+            <Link to="/store">Explore items</Link>
+          </button>
         </div>
       )}
       {cart.length > 0 && (
@@ -74,7 +76,7 @@ function Cart({ cart, setCart, storeData }) {
 }
 
 Cart.propTypes = {
-  cart: PropTypes.array,
+  cart: PropTypes.object,
   setCart: PropTypes.func,
   storeData: PropTypes.array,
 };
