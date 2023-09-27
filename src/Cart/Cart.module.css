@@ -1,7 +1,142 @@
+.container {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--light-grey);
+  flex-grow: 1;
+  align-items: flex-start;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.cart {
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  min-width: 70vw;
+}
+
+.cart > h2 {
+  margin: 0;
+  padding: 0.7rem 0;
+}
+
+.grid {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  width: 100%;
+}
+
 .item {
-  background-color: var(--item-color);
+  display: flex;
+  background-color: var(--light-white);
+  width: 100%;
+  gap: 0.75rem;
+  border-radius: var(--border-radius);
+  padding: var(--item-padding);
 }
 
 .item > img {
   height: 5rem;
+}
+
+.container1 {
+  display: grid;
+  width: 100%;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.container2 {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.quantity {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.quantity > div {
+  color: blueviolet;
+}
+
+.quantity > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  border: none;
+  background-color: var(--hover-color);
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+}
+
+.price {
+  color: orangered;
+}
+
+.summary {
+  background-color: var(--light-white);
+  flex-grow: 1;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+}
+
+.summary > h2 {
+  margin: 0;
+  padding-bottom: 1.5rem;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container3 {
+  display: grid;
+  gap: 1rem;
+}
+
+.container3 > button {
+  background-color: var(--main-color);
+  border: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.7rem;
+}
+
+.container3 > button:hover {
+  background-color: var(--hover-color);
+}
+
+.container3 > button:active {
+  background-color: var(--active-color);
+}
+
+.your-cart {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.remove-button {
+  background-color: var(--white);
+  color: white;
+  border: none;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.remove-button:hover {
+  background-color: var(--white-hover);
+}
+
+.remove-button:active {
+  background-color: var(--white-active);
+  color: var(--white)
 }

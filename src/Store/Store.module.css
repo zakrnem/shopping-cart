@@ -45,7 +45,7 @@
 .addcart {
   background-color: var(--main-color);
   border: none;
-  padding: 0.4rem .75rem;
+  padding: 0.4rem 0.75rem;
   border-radius: 0.7rem;
 }
 

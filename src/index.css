@@ -10,6 +10,8 @@
 
 :root {
   --white: rgb(94, 91, 91);
+  --white-hover: rgb(119, 115, 115);
+  --white-active: rgb(169, 164, 164);
   --main-color: rgb(112, 214, 255);
   --hover-color: rgb(172, 221, 240);
   --active-color: #b5b527;
@@ -17,7 +19,12 @@
   --gradient-1: #fffbeb;
   --gradient-2: #ffe7cc;
   --gradient-3: #f8cba6;
-  --item-color: rgb(241, 241, 241);
+  --light-grey: rgb(241, 241, 241);
+  --light-white: #ffffff;
+  --border-radius: 0.75rem;
+  --item-padding: 0.75rem 0.5rem;
+  --secondary-color: #f8cba6;
+  
 }
 
 * {
