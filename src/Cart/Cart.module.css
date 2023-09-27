@@ -138,5 +138,31 @@
 
 .remove-button:active {
   background-color: var(--white-active);
-  color: var(--white)
+  color: var(--white);
+}
+
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: var(--light-grey);
+}
+
+.empty-cart > button {
+  margin-top: 0.75rem;
+  background-color: var(--main-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  border: none;
+}
+
+.empty-cart > button:hover {
+  background-color: var(--hover-color);
+}
+
+.empty-cart > button:active {
+  background-color: var(--active-color);
 }
