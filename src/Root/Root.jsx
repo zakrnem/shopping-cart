@@ -13,16 +13,55 @@ function Root() {
   const [cart, setCart] = useState({});
   const [storeData, setStoreData] = useState([]);
   const [cartQty, setCartQty] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
-    let itemsQty = []
+    let itemsQty = [];
     for (let key in cart) {
-        itemsQty.push(cart[key].qty)
+      itemsQty.push(cart[key].qty);
     }
     const cartQuantity = itemsQty.reduce((acc, curr) => acc + curr, 0);
-    
     setCartQty(cartQuantity);
   }, [cart]);
+
+  useEffect(() => {
+    let itemsTotal = [];
+    for (let key in cart) {
+      const itemQty = cart[key].qty;
+      const currIndex = cart[key].id - 1;
+      const itemPrice = storeData[currIndex].price;
+      itemsTotal.push(itemQty * itemPrice);
+    }
+    const cartQuantity = itemsTotal.reduce((acc, curr) => acc + curr, 0);
+    setCartTotal(cartQuantity);
+  }, [cart]);
+
+  const handleAddCart = (e) => {
+    const item = parseInt(e.target.id);
+    let updatedCart = { ...cart };
+
+    let cartItems = [];
+    for (let key in cart) {
+      cartItems.push(cart[key].id);
+    }
+    if (!cartItems.includes(item)) {
+      const index = Object.keys(cart).length + 1;
+      updatedCart = { ...updatedCart, [index]: { id: item, qty: 1 } };
+      setCart(updatedCart);
+    } else {
+      const index = cartItems.indexOf(item) + 1;
+      updatedCart = {
+        ...updatedCart,
+        [index]: { ...updatedCart[index], qty: ++updatedCart[index].qty },
+      };
+      setCart(updatedCart);
+    }
+  };
+
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
+
   return (
     <>
       <Navbar cartQty={cartQty} />
@@ -39,13 +78,21 @@ function Root() {
               setCart={setCart}
               storeData={storeData}
               setStoreData={setStoreData}
+              handleAddCart={handleAddCart}
             />
           }
         />
         <Route path="/about" element={<About />} />
         <Route
           path="/cart"
-          element={<Cart cart={cart} setCart={setCart} storeData={storeData} />}
+          element={
+            <Cart
+              cart={cart}
+              storeData={storeData}
+              cartQty={cartQty}
+              cartTotal={cartTotal}
+            />
+          }
         />
       </Routes>
     </>

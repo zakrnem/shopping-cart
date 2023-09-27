@@ -2,7 +2,7 @@ import styles from "./Cart.module.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function Cart({ cart, setCart, storeData }) {
+function Cart({ cart, setCart, storeData, cartQty, cartTotal }) {
   const handleRemove = (e) => {
     const item = e.target.id;
     let updatedCart = [...cart].filter((el) => el !== parseInt(item));
@@ -11,7 +11,7 @@ function Cart({ cart, setCart, storeData }) {
 
   return (
     <>
-      {cart.length === 0 && (
+      {cartQty === 0 && (
         <div className={styles["empty-cart"]}>
           <h2>No items yet? Continue shopping to explore more.</h2>
           <button>
@@ -19,20 +19,22 @@ function Cart({ cart, setCart, storeData }) {
           </button>
         </div>
       )}
-      {cart.length > 0 && (
+      {cartQty > 0 && (
         <div className={styles.container}>
           <div className={styles.cart}>
             <div className={styles["your-cart"]}>
               <h2>Your cart</h2>
-              <div>(XX items)</div>
+              <div>({cartQty} items)</div>
             </div>
             <div className={styles.grid}>
               {Object.keys(cart).map((index) => {
-                const newIndex = cart[index] - 1;
+                const newIndex = cart[index].id - 1;
+                const quantity = cart[index].qty;
                 const key = storeData[newIndex].id;
                 const title = storeData[newIndex].title;
-                const price = storeData[newIndex].price;
+                const price = storeData[newIndex].price * quantity;
                 const imageUrl = storeData[newIndex].image;
+
                 return (
                   <div key={key} className={styles.item}>
                     <img src={imageUrl} alt={title} />
@@ -41,7 +43,7 @@ function Cart({ cart, setCart, storeData }) {
                       <div className={styles.container2}>
                         <div className={styles.quantity}>
                           <button>-</button>
-                          <div>Quatity</div>
+                          <div>{quantity}</div>
                           <button>+</button>
                         </div>
                         <div className={styles.price}>{price}</div>
@@ -64,7 +66,7 @@ function Cart({ cart, setCart, storeData }) {
             <div className={styles.container3}>
               <div className={styles.total}>
                 <div>Estimated Total</div>
-                <div>$0.00</div>
+                <div>${cartTotal}</div>
               </div>
               <button>Proceed to checkout</button>
             </div>
@@ -79,6 +81,8 @@ Cart.propTypes = {
   cart: PropTypes.object,
   setCart: PropTypes.func,
   storeData: PropTypes.array,
+  cartQty: PropTypes.number,
+  cartTotal: PropTypes.number,
 };
 
 export default Cart;

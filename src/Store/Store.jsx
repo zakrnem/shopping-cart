@@ -2,28 +2,9 @@ import { useState, useEffect } from "react";
 import styles from "./Store.module.css";
 import PropTypes from "prop-types";
 
-function Store({ cart, setCart, storeData, setStoreData }) {
+function Store({ storeData, setStoreData, handleAddCart }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const handleAddCart = (e) => {
-    const item = parseInt(e.target.id);
-    let updatedCart = { ...cart }
-
-    let cartItems = []
-    for (let key in cart) {
-        cartItems.push(cart[key].id)
-    }
-    if (!cartItems.includes(item)) {
-      const index = Object.keys(cart).length + 1;
-      updatedCart = { ...updatedCart, [index]: { id: item, qty: 1 } };
-      setCart(updatedCart);
-    } else {
-      const index = cartItems.indexOf(item) + 1
-      updatedCart = { ...updatedCart, [index]: { ...updatedCart[index] , qty: ++updatedCart[index].qty } };
-      setCart(updatedCart);
-    }
-  };
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products`)
@@ -47,10 +28,6 @@ function Store({ cart, setCart, storeData, setStoreData }) {
   useEffect(() => {
     if (error !== null) console.log(error);
   }, [error]);
-
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
 
   return (
     <div className={styles.grid}>
@@ -85,10 +62,9 @@ function Store({ cart, setCart, storeData, setStoreData }) {
 }
 
 Store.propTypes = {
-  cart: PropTypes.object,
-  setCart: PropTypes.func,
   storeData: PropTypes.array,
   setStoreData: PropTypes.func,
+  handleAddCart: PropTypes.func,
 };
 
 export default Store;
