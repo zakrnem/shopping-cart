@@ -2,7 +2,14 @@ import styles from "./Cart.module.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function Cart({ cart, storeData, cartQty, cartTotal, handleRemoveItem }) {
+function Cart({
+  cart,
+  storeData,
+  cartQty,
+  cartTotal,
+  handleRemoveItem,
+  handleQtyChange,
+}) {
   return (
     <>
       {cartQty === 0 && (
@@ -30,21 +37,24 @@ function Cart({ cart, storeData, cartQty, cartTotal, handleRemoveItem }) {
                 const imageUrl = storeData[index].image;
 
                 return (
-                  <div key={key} className={styles.item}>
+                  <div key={key} className={styles.item} id={key}>
                     <img src={imageUrl} alt={title} />
                     <div className={styles.container1}>
                       <div className={styles.title}>{title}</div>
                       <div className={styles.container2}>
                         <div className={styles.quantity}>
-                          <button>-</button>
+                          <button onClick={(e) => handleQtyChange(e, -1)}>
+                            -
+                          </button>
                           <div>{quantity}</div>
-                          <button>+</button>
+                          <button onClick={(e) => handleQtyChange(e, 1)}>
+                            +
+                          </button>
                         </div>
-                        <div className={styles.price}>{price}</div>
+                        <div className={styles.price}>{price.toFixed(2)}</div>
                         <button
                           className={styles["remove-button"]}
                           onClick={(e) => handleRemoveItem(e)}
-                          id={key}
                         >
                           Remove
                         </button>
@@ -60,7 +70,7 @@ function Cart({ cart, storeData, cartQty, cartTotal, handleRemoveItem }) {
             <div className={styles.container3}>
               <div className={styles.total}>
                 <div>Estimated Total</div>
-                <div>${cartTotal}</div>
+                <div>${cartTotal.toFixed(2)}</div>
               </div>
               <button>Proceed to checkout</button>
             </div>
@@ -77,6 +87,7 @@ Cart.propTypes = {
   storeData: PropTypes.array,
   cartQty: PropTypes.number,
   cartTotal: PropTypes.number,
+  handleQtyChange: PropTypes.func,
 };
 
 export default Cart;

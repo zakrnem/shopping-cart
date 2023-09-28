@@ -59,7 +59,9 @@ function Root() {
 
   const handleRemoveItem = (e) => {
     const prevCart = [...cart];
-    const item = parseInt(e.target.id);
+    const item = parseInt(
+      e.target.parentElement.parentElement.parentElement.id
+    );
     let cartIds = [];
     for (let key in cart) {
       cartIds.push(cart[key].id);
@@ -68,6 +70,25 @@ function Root() {
 
     prevCart.splice(index, 1);
     setCart(prevCart);
+  };
+
+  const handleQtyChange = (e, operator) => {
+    const item = parseInt(
+      e.target.parentElement.parentElement.parentElement.parentElement.id
+    );
+    let updatedCart = [...cart];
+
+    let cartItems = [];
+    for (let key in cart) {
+      cartItems.push(cart[key].id);
+    }
+    const index = cartItems.indexOf(item);
+    updatedCart[index] = {
+      ...updatedCart[index],
+      qty: updatedCart[index].qty + operator,
+    };
+    if (updatedCart[index].qty < 1) updatedCart.splice(index, 1)
+    setCart(updatedCart);
   };
 
   useEffect(() => {
@@ -104,6 +125,7 @@ function Root() {
               cartQty={cartQty}
               cartTotal={cartTotal}
               handleRemoveItem={handleRemoveItem}
+              handleQtyChange={handleQtyChange}
             />
           }
         />
