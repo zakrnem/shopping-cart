@@ -72,7 +72,9 @@ function Cart({
                 <div>Estimated Total</div>
                 <div>${cartTotal.toFixed(2)}</div>
               </div>
-              <button>Proceed to checkout</button>
+              <button>
+                <Link to="/about">Proceed to checkout</Link>
+              </button>
             </div>
           </div>
         </div>

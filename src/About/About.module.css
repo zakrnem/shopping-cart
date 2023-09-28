@@ -1,0 +1,23 @@
+.container {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  flex-grow: 1;
+  background-image: linear-gradient(
+    var(--gradient-3),
+    var(--gradient-2),
+    var(--gradient-1)
+  );
+}
+
+.container  > button {
+    margin-top: 0.75rem;
+    background-color: var(--main-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    border: none;
+}
+
+.container > h1 {
+  font-size: 5rem;
+}

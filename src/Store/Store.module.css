@@ -23,7 +23,7 @@
 }
 
 .item:hover {
-  outline: 2px solid var(--main-color);
+  outline: 3px solid var(--main-color);
 }
 
 .item > div {

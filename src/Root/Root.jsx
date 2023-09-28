@@ -87,7 +87,7 @@ function Root() {
       ...updatedCart[index],
       qty: updatedCart[index].qty + operator,
     };
-    if (updatedCart[index].qty < 1) updatedCart.splice(index, 1)
+    if (updatedCart[index].qty < 1) updatedCart.splice(index, 1);
     setCart(updatedCart);
   };
 
