@@ -10,7 +10,7 @@ import Cart from "../Cart/Cart.jsx";
 import ErrorPage from "../error-page.jsx";
 
 function Root() {
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState([]);
   const [storeData, setStoreData] = useState([]);
   const [cartQty, setCartQty] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
@@ -38,24 +38,36 @@ function Root() {
 
   const handleAddCart = (e) => {
     const item = parseInt(e.target.id);
-    let updatedCart = { ...cart };
+    let updatedCart = [...cart];
 
     let cartItems = [];
     for (let key in cart) {
       cartItems.push(cart[key].id);
     }
     if (!cartItems.includes(item)) {
-      const index = Object.keys(cart).length + 1;
-      updatedCart = { ...updatedCart, [index]: { id: item, qty: 1 } };
+      updatedCart = [...updatedCart, { id: item, qty: 1 }];
       setCart(updatedCart);
     } else {
-      const index = cartItems.indexOf(item) + 1;
-      updatedCart = {
-        ...updatedCart,
-        [index]: { ...updatedCart[index], qty: ++updatedCart[index].qty },
+      const index = cartItems.indexOf(item);
+      updatedCart[index] = {
+        ...updatedCart[index],
+        qty: ++updatedCart[index].qty,
       };
       setCart(updatedCart);
     }
+  };
+
+  const handleRemoveItem = (e) => {
+    const prevCart = [...cart];
+    const item = parseInt(e.target.id);
+    let cartIds = [];
+    for (let key in cart) {
+      cartIds.push(cart[key].id);
+    }
+    const index = cartIds.indexOf(item);
+
+    prevCart.splice(index, 1);
+    setCart(prevCart);
   };
 
   useEffect(() => {
@@ -91,6 +103,7 @@ function Root() {
               storeData={storeData}
               cartQty={cartQty}
               cartTotal={cartTotal}
+              handleRemoveItem={handleRemoveItem}
             />
           }
         />

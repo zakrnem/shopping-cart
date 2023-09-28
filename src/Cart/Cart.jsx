@@ -2,13 +2,7 @@ import styles from "./Cart.module.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function Cart({ cart, setCart, storeData, cartQty, cartTotal }) {
-  const handleRemove = (e) => {
-    const item = e.target.id;
-    let updatedCart = [...cart].filter((el) => el !== parseInt(item));
-    setCart(updatedCart);
-  };
-
+function Cart({ cart, storeData, cartQty, cartTotal, handleRemoveItem }) {
   return (
     <>
       {cartQty === 0 && (
@@ -27,13 +21,13 @@ function Cart({ cart, setCart, storeData, cartQty, cartTotal }) {
               <div>({cartQty} items)</div>
             </div>
             <div className={styles.grid}>
-              {Object.keys(cart).map((index) => {
-                const newIndex = cart[index].id - 1;
-                const quantity = cart[index].qty;
-                const key = storeData[newIndex].id;
-                const title = storeData[newIndex].title;
-                const price = storeData[newIndex].price * quantity;
-                const imageUrl = storeData[newIndex].image;
+              {cart.map((obj) => {
+                const index = obj.id - 1;
+                const quantity = obj.qty;
+                const key = storeData[index].id;
+                const title = storeData[index].title;
+                const price = storeData[index].price * quantity;
+                const imageUrl = storeData[index].image;
 
                 return (
                   <div key={key} className={styles.item}>
@@ -49,7 +43,7 @@ function Cart({ cart, setCart, storeData, cartQty, cartTotal }) {
                         <div className={styles.price}>{price}</div>
                         <button
                           className={styles["remove-button"]}
-                          onClick={(e) => handleRemove(e)}
+                          onClick={(e) => handleRemoveItem(e)}
                           id={key}
                         >
                           Remove
@@ -78,8 +72,8 @@ function Cart({ cart, setCart, storeData, cartQty, cartTotal }) {
 }
 
 Cart.propTypes = {
-  cart: PropTypes.object,
-  setCart: PropTypes.func,
+  cart: PropTypes.array,
+  handleRemoveItem: PropTypes.func,
   storeData: PropTypes.array,
   cartQty: PropTypes.number,
   cartTotal: PropTypes.number,
