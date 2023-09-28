@@ -10,12 +10,12 @@
   );
 }
 
-.container  > button {
-    margin-top: 0.75rem;
-    background-color: var(--main-color);
-    padding: 0.5rem 1rem;
-    border-radius: 0.75rem;
-    border: none;
+.container > button {
+  margin-top: 0.75rem;
+  background-color: var(--main-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  border: none;
 }
 
 .container > h1 {

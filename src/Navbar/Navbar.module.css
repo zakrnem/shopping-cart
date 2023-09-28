@@ -66,3 +66,7 @@
   height: 1.5rem;
   color: orangered;
 }
+
+.active {
+  background-color: var(--hover-color);
+}
