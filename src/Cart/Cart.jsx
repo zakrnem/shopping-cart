@@ -1,5 +1,6 @@
 import styles from "./Cart.module.css";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function Cart({
@@ -9,7 +10,11 @@ function Cart({
   cartTotal,
   handleRemoveItem,
   handleQtyChange,
+  setActiveElement,
 }) {
+  useEffect(() => {
+    setActiveElement('cart')
+  })
   return (
     <>
       {cartQty === 0 && (
@@ -90,6 +95,7 @@ Cart.propTypes = {
   cartQty: PropTypes.number,
   cartTotal: PropTypes.number,
   handleQtyChange: PropTypes.func,
+  setActiveElement: PropTypes.func,
 };
 
 export default Cart;

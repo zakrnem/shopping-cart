@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import imgUrl1 from "../assets/store-svgrepo-com2.svg";
 import PropTypes from "prop-types";
 
-function Navbar({ cartQty, handleItemClick, activeElement }) {
+function Navbar({ cartQty, activeElement, setActiveElement }) {
   return (
     <div className={styles.header}>
       <div className={styles.logo}>
@@ -14,28 +14,25 @@ function Navbar({ cartQty, handleItemClick, activeElement }) {
         <Link
           to="home"
           className={activeElement === 'home' ? styles.active : ''}
-          onClick={() => handleItemClick("home")}
+          onClick={() => setActiveElement('home')}
         >
           Home
         </Link>
         <Link
           to="store"
           className={activeElement === 'store' ? styles.active : ''}
-          onClick={() => handleItemClick("store")}
         >
           Products
         </Link>
         <Link
           to="about"
           className={activeElement === 'about' ? styles.active : ''}
-          onClick={() => handleItemClick("about")}
         >
           About
         </Link>
         <Link
           to="cart"
           className={`${styles.cart} ${activeElement === 'cart' ? styles.active : ''}`}
-          onClick={() => handleItemClick("cart")}
         >
           Cart{" "}
           {cartQty > 0 && <div className={styles.cartcount}>{cartQty}</div>}
@@ -48,8 +45,8 @@ function Navbar({ cartQty, handleItemClick, activeElement }) {
 Navbar.propTypes = {
   cart: PropTypes.object,
   cartQty: PropTypes.number,
-  handleItemClick: PropTypes.func,
   activeElement: PropTypes.string,
+  setActiveElement: PropTypes.func,
 };
 
 export default Navbar;

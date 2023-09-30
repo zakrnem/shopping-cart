@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./Store.module.css";
 import PropTypes from "prop-types";
 
-function Store({ storeData, setStoreData, handleAddCart }) {
+function Store({ storeData, setStoreData, handleAddCart, setActiveElement }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -28,6 +28,10 @@ function Store({ storeData, setStoreData, handleAddCart }) {
   useEffect(() => {
     if (error !== null) console.log(error);
   }, [error]);
+
+  useEffect(() => {
+    setActiveElement('store')
+  }, [])
 
   return (
     <div className={styles.grid}>
@@ -65,6 +69,7 @@ Store.propTypes = {
   storeData: PropTypes.array,
   setStoreData: PropTypes.func,
   handleAddCart: PropTypes.func,
+  setActiveElement: PropTypes.func,
 };
 
 export default Store;

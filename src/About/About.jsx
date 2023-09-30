@@ -1,6 +1,11 @@
+import { useEffect } from "react";
 import styles from "./About.module.css";
+import PropTypes from "prop-types";
 
-function About() {
+function About({ setActiveElement }) {
+  useEffect(() => {
+    setActiveElement('about')
+  }, [])
   return (
     <div className={styles.container}>
       <h1>This is a fake store</h1>
@@ -10,5 +15,9 @@ function About() {
     </div>
   );
 }
+
+About.propTypes = {
+  setActiveElement: PropTypes.func,
+};
 
 export default About;

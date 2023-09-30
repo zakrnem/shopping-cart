@@ -14,7 +14,7 @@ function Root() {
   const [storeData, setStoreData] = useState([]);
   const [cartQty, setCartQty] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
-  const [activeElement, setActiveElement] = useState(null);
+  const [activeElement, setActiveElement] = useState('home');
 
   useEffect(() => {
     let itemsQty = [];
@@ -92,17 +92,13 @@ function Root() {
     setCart(updatedCart);
   };
 
-  const handleItemClick = (element) => {
-    setActiveElement(element);
-  };
-
   useEffect(() => {
     console.log(cart);
   }, [cart]);
 
   return (
     <>
-      <Navbar cartQty={cartQty} handleItemClick={handleItemClick} activeElement={activeElement} />
+      <Navbar cartQty={cartQty} activeElement={activeElement} setActiveElement={setActiveElement} />
       <Outlet />
 
       <Routes>
@@ -117,10 +113,11 @@ function Root() {
               storeData={storeData}
               setStoreData={setStoreData}
               handleAddCart={handleAddCart}
+              setActiveElement={setActiveElement}
             />
           }
         />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About setActiveElement={setActiveElement} />} />
         <Route
           path="/cart"
           element={
@@ -131,6 +128,7 @@ function Root() {
               cartTotal={cartTotal}
               handleRemoveItem={handleRemoveItem}
               handleQtyChange={handleQtyChange}
+              setActiveElement={setActiveElement}
             />
           }
         />
