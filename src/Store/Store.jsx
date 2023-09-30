@@ -30,8 +30,8 @@ function Store({ storeData, setStoreData, handleAddCart, setActiveElement }) {
   }, [error]);
 
   useEffect(() => {
-    setActiveElement('store')
-  }, [])
+    setActiveElement("store");
+  }, []);
 
   return (
     <div className={styles.grid}>

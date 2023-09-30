@@ -13,8 +13,8 @@ function Cart({
   setActiveElement,
 }) {
   useEffect(() => {
-    setActiveElement('cart')
-  })
+    setActiveElement("cart");
+  });
   return (
     <>
       {cartQty === 0 && (

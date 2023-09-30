@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 
 function About({ setActiveElement }) {
   useEffect(() => {
-    setActiveElement('about')
-  }, [])
+    setActiveElement("about");
+  }, []);
   return (
     <div className={styles.container}>
       <h1>This is a fake store</h1>

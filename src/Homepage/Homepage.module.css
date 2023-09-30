@@ -7,7 +7,10 @@
   flex-grow: 1;
   display: grid;
   align-content: center;
-  justify-items: center;
+}
+
+.homepage > * {
+  text-align: center;
 }
 
 .homepage > h1 {
@@ -22,6 +25,7 @@
   padding: 0.5rem 1rem;
   border-radius: 0.75rem;
   border: none;
+  justify-self: center;
 }
 
 .homepage > button:hover {

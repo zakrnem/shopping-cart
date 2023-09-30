@@ -7,7 +7,7 @@ function Homepage() {
       <h1>Welcome to The Store!</h1>
       <p>Your Destination for Quality and Style.</p>
       <button>
-        <Link to="/store" >Shop now</Link>
+        <Link to="/store">Shop now</Link>
       </button>
     </div>
   );

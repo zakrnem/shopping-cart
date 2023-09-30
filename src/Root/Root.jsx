@@ -14,7 +14,7 @@ function Root() {
   const [storeData, setStoreData] = useState([]);
   const [cartQty, setCartQty] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
-  const [activeElement, setActiveElement] = useState('home');
+  const [activeElement, setActiveElement] = useState("home");
 
   useEffect(() => {
     let itemsQty = [];
@@ -92,13 +92,13 @@ function Root() {
     setCart(updatedCart);
   };
 
-  useEffect(() => {
-    console.log(cart);
-  }, [cart]);
-
   return (
     <>
-      <Navbar cartQty={cartQty} activeElement={activeElement} setActiveElement={setActiveElement} />
+      <Navbar
+        cartQty={cartQty}
+        activeElement={activeElement}
+        setActiveElement={setActiveElement}
+      />
       <Outlet />
 
       <Routes>
@@ -117,7 +117,10 @@ function Root() {
             />
           }
         />
-        <Route path="/about" element={<About setActiveElement={setActiveElement} />} />
+        <Route
+          path="/about"
+          element={<About setActiveElement={setActiveElement} />}
+        />
         <Route
           path="/cart"
           element={

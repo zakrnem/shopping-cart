@@ -13,26 +13,28 @@ function Navbar({ cartQty, activeElement, setActiveElement }) {
       <div className={styles.links}>
         <Link
           to="home"
-          className={activeElement === 'home' ? styles.active : ''}
-          onClick={() => setActiveElement('home')}
+          className={activeElement === "home" ? styles.active : ""}
+          onClick={() => setActiveElement("home")}
         >
           Home
         </Link>
         <Link
           to="store"
-          className={activeElement === 'store' ? styles.active : ''}
+          className={activeElement === "store" ? styles.active : ""}
         >
           Products
         </Link>
         <Link
           to="about"
-          className={activeElement === 'about' ? styles.active : ''}
+          className={activeElement === "about" ? styles.active : ""}
         >
           About
         </Link>
         <Link
           to="cart"
-          className={`${styles.cart} ${activeElement === 'cart' ? styles.active : ''}`}
+          className={`${styles.cart} ${
+            activeElement === "cart" ? styles.active : ""
+          }`}
         >
           Cart{" "}
           {cartQty > 0 && <div className={styles.cartcount}>{cartQty}</div>}
